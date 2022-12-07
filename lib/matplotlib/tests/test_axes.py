@@ -2509,6 +2509,14 @@ class TestScatter:
                                                    [0.3, 0.3, 0.3, 1],
                                                    [0.5, 0.5, 0.5, 1]])
         assert_array_equal(coll.get_linewidths(), [1.1, 1.2, 1.3])
+        
+        
+    def test_scatter_empty_marker(self):
+        coll = plt.scatter([0, 1, 2], [1, 3, 2], c=['0.1', '0.3', '0.5'], facecolors='none')
+        assert coll.get_facecolors().shape == (0, 4)  # no facecolors
+        assert_array_equal(coll.get_edgecolors(), [[0.1, 0.1, 0.1, 1],
+                                                   [0.3, 0.3, 0.3, 1],
+                                                   [0.5, 0.5, 0.5, 1]])
 
     def test_scatter_size_arg_size(self):
         x = np.arange(4)
